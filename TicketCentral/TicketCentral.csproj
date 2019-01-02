@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\page_about\about_concertImg.jpg" />
+    <None Include="wwwroot\images\page_about\about_venueImg.jpg" />
+  </ItemGroup>
+
 </Project>

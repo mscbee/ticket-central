@@ -4,6 +4,64 @@
     ViewData["Title"] = "About";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@Model.Message</h3>
+<h3>@Model.msgWelcome</h3>
 
-<p>We are an event system which takes pride in connecting our user base to communities across London. Inclusive, Diverse and Empowering.</p>
+<h3>Who are we?</h3>
+<p>@Model.msgWhoAreWe</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="~/images/page_about/about_venueImg.jpg" alt="..." />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Our Venues</h4>
+                    We pride ourselves with having the most suitable venues available for events of all capacities.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="~/images/page_about/about_concertImg.jpg" alt="..." />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Our Objective</h4>
+                    Deliver outstanding locations whilst connecting empowering performances for those who matter.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="~/images/page_about/about_concertImg.jpg" alt="..." />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Our Values</h4>
+                    You can expect inclusive and diverse events, that ensure safety and fun are both equally met.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="~/images/page_about/about_concertImg.jpg" alt="..." />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Your Experience</h4>
+                    Your experience does matter to use, so if any concerns, queries or complaints, email customer@ticketcentral.com or call +447763708782.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
