@@ -12,7 +12,7 @@ namespace TicketCentral.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Welcome to Ticket Central, our objective is to connect both events and enthusiasts together.";
         }
     }
 }
