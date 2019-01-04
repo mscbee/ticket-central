@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders.Physical;
 using Microsoft.AspNetCore.StaticFiles;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
+using TicketCentral.Models;
 
 namespace TicketCentral
 {
@@ -36,6 +38,9 @@ namespace TicketCentral
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<BookingContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("BookingContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace TicketCentral.Models
 {
     public class VenueBooking
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int VenueBookingID {get; set;}
         public int EventID { get; set; }
-        public int PaymentID { get; set; }
-        public int EventManagerID { get; set; }
         public int VenueID { get; set; }
+        public string BookingManagerName { get; set; }
+        public string BookingManagerEmail { get; set; }
 
         public Event Event { get; set; }
-        public CardPayment CardPayment { get; set; }
-        public EventManager EventManager { get; set; }
         public Venue Venue { get; set; }
+
     }
 }
