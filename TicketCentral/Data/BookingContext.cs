@@ -14,5 +14,7 @@ namespace TicketCentral.Models
         }
 
         public DbSet<TicketCentral.Models.VenueBooking> VenueBooking { get; set; }
+        public DbSet<TicketCentral.Models.Venue> Venue { get; set; }
+        public DbSet<TicketCentral.Models.Event> Event { get; set; }
     }
 }

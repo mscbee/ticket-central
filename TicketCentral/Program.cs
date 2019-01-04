@@ -26,6 +26,7 @@ namespace TicketCentral
                 {
                     var context = services.GetRequiredService<BookingContext>();
                     context.Database.EnsureCreated();
+                    DbInitializer.Initialize(context);
                 }
                 catch(Exception ex)
                 {

@@ -13,6 +13,7 @@ namespace TicketCentral.Models
         public int VenueID { get; set; }
         public string BookingManagerName { get; set; }
         public string BookingManagerEmail { get; set; }
+        public string BookingDate { get; set; }
 
         public Event Event { get; set; }
         public Venue Venue { get; set; }

@@ -20,7 +20,7 @@ namespace TicketCentral.Pages.VenueBookings
 
         public IActionResult OnGet()
         {
-        ViewData["VenueID"] = new SelectList(_context.Set<Venue>(), "VenueID", "VenueID");
+        ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueID");
             return Page();
         }
 

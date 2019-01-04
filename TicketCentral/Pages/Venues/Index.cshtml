@@ -22,12 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Venue[0].VenuePostcode)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Venue[0].BookingDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Venue[0].IsAvailable)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -42,12 +36,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VenuePostcode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAvailable)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.VenueID">Edit</a> |

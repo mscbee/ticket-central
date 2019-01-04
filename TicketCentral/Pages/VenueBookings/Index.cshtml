@@ -23,7 +23,10 @@
                 @Html.DisplayNameFor(model => model.VenueBooking[0].BookingManagerEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VenueBooking[0].Venue.VenueName)
+                @Html.DisplayNameFor(model => model.VenueBooking[0].BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VenueBooking[0].Venue)
             </th>
             <th></th>
         </tr>
@@ -41,7 +44,11 @@
                 @Html.DisplayFor(modelItem => item.BookingManagerEmail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venue.VenueName)</td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue.VenueID)
+            </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.VenueBookingID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.VenueBookingID">Details</a> |

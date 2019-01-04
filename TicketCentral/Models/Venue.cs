@@ -11,7 +11,5 @@ namespace TicketCentral.Models
         public string VenueName { get; set; }
         public string VenueAddress { get; set; }
         public string VenuePostcode { get; set; }
-        public string BookingDate { get; set; }
-        public int IsAvailable { get; set; }
     }
 }

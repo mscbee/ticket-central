@@ -16,4 +16,8 @@
     <None Include="wwwroot\images\page_about\about_venueImg.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\VenueBookings\" />
+  </ItemGroup>
+
 </Project>

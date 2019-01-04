@@ -36,7 +36,7 @@ namespace TicketCentral.Pages.VenueBookings
             {
                 return NotFound();
             }
-           ViewData["VenueID"] = new SelectList(_context.Set<Venue>(), "VenueID", "VenueID");
+           ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueID");
             return Page();
         }
 
