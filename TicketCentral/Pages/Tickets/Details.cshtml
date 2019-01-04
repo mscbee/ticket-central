@@ -1,0 +1,31 @@
+﻿@page
+@model TicketCentral.Pages.Tickets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.Customer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.Customer.CustomerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticket.VenueBooking)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ticket.VenueBooking.VenueBookingID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Ticket.TicketID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

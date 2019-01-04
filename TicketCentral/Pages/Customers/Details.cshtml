@@ -1,0 +1,55 @@
+﻿@page
+@model TicketCentral.Pages.Customers.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.ContactNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.ContactNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.HasSubscription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Customer.HasSubscription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

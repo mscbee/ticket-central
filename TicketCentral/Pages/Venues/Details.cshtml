@@ -1,0 +1,49 @@
+﻿@page
+@model TicketCentral.Pages.Venues.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Venue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenueName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenueName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenueAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenueAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenuePostcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenuePostcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.BookingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.BookingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.IsAvailable)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.IsAvailable)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Venue.VenueID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

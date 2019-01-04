@@ -1,0 +1,52 @@
+﻿@page
+@model TicketCentral.Pages.Venues.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Venue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenueName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenueName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenueAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenueAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.VenuePostcode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.VenuePostcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.BookingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.BookingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Venue.IsAvailable)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Venue.IsAvailable)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Venue.VenueID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

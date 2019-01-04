@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TicketCentral.Models
 {
-    public class Tickets
+    public class Ticket
     {
         public int TicketID { get; set; }
         public int VenueBookingID { get; set; }
