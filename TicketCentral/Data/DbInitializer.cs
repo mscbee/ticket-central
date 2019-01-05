@@ -41,19 +41,20 @@ namespace TicketCentral.Models
                 context.Event.Add(e);
             }
             context.SaveChanges();
-
+            /*
             var venueBooking = new VenueBooking[]
             {
-                new VenueBooking{EventID=1, VenueID=1, BookingManagerName="Luke", BookingManagerEmail="Luke@unknown.com", BookingDate="02082019"},
-                new VenueBooking{EventID=2, VenueID=1, BookingManagerName="Charlene", BookingManagerEmail="Charlene@unknown.com", BookingDate="02082019"},
-                new VenueBooking{EventID=1, VenueID=2, BookingManagerName="Luuuke", BookingManagerEmail="Lukeeee@unknown.com", BookingDate="02082019"},
-                new VenueBooking{EventID=2, VenueID=2, BookingManagerName="Chaaaaarlene", BookingManagerEmail="Chaaaaarlene@unknown.com", BookingDate="02082019"},
+                new VenueBooking{EventID=1, VenueID=1, BookingManagerName="Luke", BookingManagerEmail="Luke@unknown.com", BookingDate="02/08/2019"},
+                new VenueBooking{EventID=2, VenueID=1, BookingManagerName="Charlene", BookingManagerEmail="Charlene@unknown.com", BookingDate="02/08/2019"},
+                new VenueBooking{EventID=1, VenueID=2, BookingManagerName="Luuuke", BookingManagerEmail="Lukeeee@unknown.com", BookingDate="02/08/2019"},
+                new VenueBooking{EventID=2, VenueID=2, BookingManagerName="Chaaaaarlene", BookingManagerEmail="Chaaaaarlene@unknown.com", BookingDate="02/08/2019"},
             };
             foreach (VenueBooking vb in venueBooking)
             {
                 context.VenueBooking.Add(vb);
             }
             context.SaveChanges();
+            */
         }
     }
 }

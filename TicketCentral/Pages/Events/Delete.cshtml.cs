@@ -20,19 +20,26 @@ namespace TicketCentral.Pages.Events
 
         [BindProperty]
         public Event Event { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Event = await _context.Event.FirstOrDefaultAsync(m => m.EventID == id);
+            Event = await _context.Event.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.EventID == id);
 
             if (Event == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -44,15 +51,19 @@ namespace TicketCentral.Pages.Events
                 return NotFound();
             }
 
-            Event = await _context.Event.FindAsync(id);
+            Event = await _context.Event.AsNoTracking()
+                .FirstOrDefaultAsync(e => e.EventID == id);
 
-            if (Event != null)
+            try
             {
                 _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            return RedirectToPage("./Index");
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(".Delete", new { id, saveChangesError = true });
+            }
         }
     }
 }

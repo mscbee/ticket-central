@@ -20,21 +20,27 @@ namespace TicketCentral.Pages.Tickets
 
         [BindProperty]
         public Ticket Ticket { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Ticket = await _context.Ticket
+            Ticket = await _context.Ticket.AsNoTracking()
                 .Include(t => t.Customer)
                 .Include(t => t.VenueBooking).FirstOrDefaultAsync(m => m.TicketID == id);
 
             if (Ticket == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -46,15 +52,19 @@ namespace TicketCentral.Pages.Tickets
                 return NotFound();
             }
 
-            Ticket = await _context.Ticket.FindAsync(id);
+            Ticket = await _context.Ticket.AsNoTracking()
+                .FirstOrDefaultAsync(t => t.TicketID == id);
 
-            if (Ticket != null)
+            try
             {
                 _context.Ticket.Remove(Ticket);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            return RedirectToPage("./Index");
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(".Delete", new { id, saveChangesError = true });
+            }
         }
     }
 }

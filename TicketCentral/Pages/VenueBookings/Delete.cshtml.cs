@@ -20,20 +20,26 @@ namespace TicketCentral.Pages.VenueBookings
 
         [BindProperty]
         public VenueBooking VenueBooking { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            VenueBooking = await _context.VenueBooking
-                .Include(v => v.Venue).FirstOrDefaultAsync(m => m.VenueBookingID == id);
+            VenueBooking = await _context.VenueBooking.AsNoTracking()
+                          .Include(v => v.Venue).FirstOrDefaultAsync(m => m.VenueBookingID == id);
 
             if (VenueBooking == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -45,15 +51,19 @@ namespace TicketCentral.Pages.VenueBookings
                 return NotFound();
             }
 
-            VenueBooking = await _context.VenueBooking.FindAsync(id);
+            VenueBooking = await _context.VenueBooking.AsNoTracking()
+                .FirstOrDefaultAsync(vb => vb.VenueBookingID == id);
 
-            if (VenueBooking != null)
+            try
             {
                 _context.VenueBooking.Remove(VenueBooking);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            } catch (DbUpdateException)
+            {
+                return RedirectToAction(".Delete", new { id, saveChangesError = true});
             }
 
-            return RedirectToPage("./Index");
         }
     }
 }

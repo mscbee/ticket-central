@@ -20,20 +20,28 @@ namespace TicketCentral.Pages.Customers
 
         [BindProperty]
         public Customer Customer { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerID == id);
+            Customer = await _context.Customer.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.CustomerID == id);
 
             if (Customer == null)
             {
                 return NotFound();
             }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+
             return Page();
         }
 
@@ -44,15 +52,19 @@ namespace TicketCentral.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FindAsync(id);
+            Customer = await _context.Customer.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.CustomerID == id);
 
-            if (Customer != null)
+            try
             {
                 _context.Customer.Remove(Customer);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            return RedirectToPage("./Index");
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(".Delete", new { id, saveChangesError = true });
+            }
         }
     }
 }
