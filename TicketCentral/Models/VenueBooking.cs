@@ -11,14 +11,16 @@ namespace TicketCentral.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VenueBookingID { get; set; }
-        [Display(Name = "Choose a Event")]
+        [Display(Name = "Event")]
         public int EventID { get; set; }
-        [Display(Name = "Choose a Venue")]
+        [Display(Name = "Venue")]
         public int VenueID { get; set; }
         [Required]
         [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
+        [Display(Name = "Booking Manager Name")]
         public string BookingManagerName { get; set; }
         [Required]
+        [Display(Name = "Email")]
         [StringLength(50, ErrorMessage = "Email cannot be longer than 50 characters.")]
         public string BookingManagerEmail { get; set; }
         [DataType(DataType.Date)]
