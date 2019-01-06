@@ -10,7 +10,7 @@ using TicketCentral.Models;
 
 namespace TicketCentral.Pages.VenueBookings
 {
-    public class EditModel : PageModel
+    public class EditModel : VenueNamePageModel
     {
         private readonly TicketCentral.Models.BookingContext _context;
 
@@ -36,7 +36,8 @@ namespace TicketCentral.Pages.VenueBookings
             {
                 return NotFound();
             }
-           ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueID");
+            PopulateVenueList(true, _context);
+            PopulateVenueList(false, _context);
             return Page();
         }
 

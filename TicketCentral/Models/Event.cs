@@ -18,7 +18,5 @@ namespace TicketCentral.Models
         [StringLength(50, ErrorMessage = "Email cannot be longer than 50 characters.")]
         public string OrganiserEmail { get; set; }
         public int VenueBookingID { get; set; }
-
-        public VenueBooking VenueBooking { get; set; }
     }
 }

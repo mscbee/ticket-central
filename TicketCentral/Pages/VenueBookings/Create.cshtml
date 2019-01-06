@@ -14,13 +14,20 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="VenueBooking.EventID" class="control-label"></label>
-                <input asp-for="VenueBooking.EventID" class="form-control" />
-                <span asp-validation-for="VenueBooking.EventID" class="text-danger"></span>
+                <label asp-for="VenueBooking.Event" class="control-label"></label>
+                <select asp-for="VenueBooking.EventID" class="form-control"
+                        asp-items="@Model.eventList">
+                    <option value="">-- Select Event --</option>
+                </select>
+                <span asp-validation-for="VenueBooking.EventID" class="text-danger" />
             </div>
             <div class="form-group">
-                <label asp-for="VenueBooking.VenueID" class="control-label"></label>
-                <select asp-for="VenueBooking.VenueID" class ="form-control" asp-items="ViewBag.VenueID"></select>
+                <label asp-for="VenueBooking.Venue" class="control-label"></label>
+                <select asp-for="VenueBooking.VenueID" class="form-control"
+                        asp-items="@Model.venueList">
+                    <option value="">-- Select Venue --</option>
+                </select>
+                <span asp-validation-for="VenueBooking.VenueID" class="text-danger" />
             </div>
             <div class="form-group">
                 <label asp-for="VenueBooking.BookingManagerName" class="control-label"></label>

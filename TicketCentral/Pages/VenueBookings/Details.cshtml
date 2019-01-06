@@ -1,4 +1,4 @@
-﻿@page "{id:int?}"
+﻿@page
 @model TicketCentral.Pages.VenueBookings.DetailsModel
 
 @{
@@ -39,7 +39,7 @@
             @Html.DisplayNameFor(model => model.VenueBooking.Venue)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.VenueBooking.Venue.VenueID)
+            @Html.DisplayFor(model => model.VenueBooking.Venue.VenueAddress)
         </dd>
     </dl>
 </div>

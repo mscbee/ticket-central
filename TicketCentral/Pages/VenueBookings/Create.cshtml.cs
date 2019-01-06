@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TicketCentral.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TicketCentral.Pages.VenueBookings
 {
-    public class CreateModel : PageModel
+    public class CreateModel : VenueNamePageModel
     {
+        
         private readonly TicketCentral.Models.BookingContext _context;
 
         public CreateModel(TicketCentral.Models.BookingContext context)
@@ -20,7 +22,10 @@ namespace TicketCentral.Pages.VenueBookings
 
         public IActionResult OnGet()
         {
-        ViewData["VenueID"] = new SelectList(_context.Venue, "VenueID", "VenueID");
+            bool isVenue = true;
+            bool isEvent = false; //this fullfils switch case false condition.
+            PopulateVenueList(isVenue, _context);
+            PopulateVenueList(isEvent, _context);
             return Page();
         }
 
