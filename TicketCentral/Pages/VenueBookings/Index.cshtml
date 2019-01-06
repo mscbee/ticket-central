@@ -14,7 +14,12 @@
     <thead>
         <tr>
             <th>
+                <!--       <a asp-page="./Index" asp-route-sortOrder="@Model.sortByEvent">
+                     @Html.DisplayNameFor(model => model.VenueBooking[0].EventID)
+                   -->
+
                 @Html.DisplayNameFor(model => model.VenueBooking[0].EventID)
+
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VenueBooking[0].BookingManagerName)
@@ -23,38 +28,50 @@
                 @Html.DisplayNameFor(model => model.VenueBooking[0].BookingManagerEmail)
             </th>
             <th>
+                <!--
+        <a asp-page="./Index" asp-route-sortOrder="@Model.sortByDate">
+            @Html.DisplayNameFor(model => model.VenueBooking[0].BookingDate)
+        </a>
+        -->
                 @Html.DisplayNameFor(model => model.VenueBooking[0].BookingDate)
+
             </th>
             <th>
+                <!--
+        <a asp-page="./Index" asp-route-sortOrder="@Model.sortByVenue">
+            @Html.DisplayNameFor(model => model.VenueBooking[0].Venue)
+        </a>
+        -->
                 @Html.DisplayNameFor(model => model.VenueBooking[0].Venue)
+
             </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.VenueBooking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingManagerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingManagerEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Venue.VenueName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.VenueBookingID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.VenueBookingID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.VenueBookingID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.VenueBooking) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingManagerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingManagerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venue.VenueName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.VenueBookingID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.VenueBookingID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.VenueBookingID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
