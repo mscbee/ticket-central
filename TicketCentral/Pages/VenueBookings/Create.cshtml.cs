@@ -34,19 +34,6 @@ namespace TicketCentral.Pages.VenueBookings
                 return Page();
             }
 
-            /* NOT NEEDED ANYMORE.
-           if (await TryUpdateModelAsync<VenueBooking>(
-               emptyBooking, "booking", vb => vb.VenueBookingID,
-               vb => vb.VenueID,
-               vb => vb.EventID,
-               vb => vb.BookingManagerName,
-               vb => vb.BookingManagerEmail, vb => vb.BookingDate))
-           {
-               _context.VenueBooking.Add(emptyBooking);
-               await _context.SaveChangesAsync();
-               return RedirectToPage("./Index");
-           } */
-
             _context.VenueBooking.Add(VenueBooking);
             await _context.SaveChangesAsync();
 

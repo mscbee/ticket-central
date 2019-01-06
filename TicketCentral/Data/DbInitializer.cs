@@ -16,6 +16,20 @@ namespace TicketCentral.Models
                 return;
             }
 
+            var customers = new Customer[]
+            {
+                new Customer{FirstName="a",LastName="b",Email="ab@sky.uk", Password="Itsasecret", ContactNumber=01234567891, HasSubscription=0},
+                new Customer{FirstName="a",LastName="b",Email="ab@sky.uk", Password="Itsasecret", ContactNumber=01234567891, HasSubscription=0}
+            };
+
+            foreach (Customer c in customers)
+            {
+                context.Customer.Add(c);
+
+            }
+            context.SaveChanges();
+
+
             var venues = new Venue[]
             {
                 new Venue{VenueName="O2",VenueAddress="129 Somewhere Somewhere",VenuePostcode="SE15 2JP"},
@@ -41,6 +55,22 @@ namespace TicketCentral.Models
                 context.Event.Add(e);
             }
             context.SaveChanges();
+
+            var admins = new Admin[]
+           {
+                new Admin{UserName="admin", Password="admin"}
+           };
+
+            foreach (Admin a in admins)
+            {
+                context.Admin.Add(a);
+            }
+            context.SaveChanges();
+
+
+
+
+
             /*
             var venueBooking = new VenueBooking[]
             {

@@ -30,12 +30,13 @@ namespace TicketCentral.Pages.VenueBookings
             }
 
             VenueBooking = await _context.VenueBooking.AsNoTracking()
-                          .Include(v => v.Venue).FirstOrDefaultAsync(m => m.VenueBookingID == id);
+                .Include(v => v.Venue).FirstOrDefaultAsync(m => m.VenueBookingID == id);
 
             if (VenueBooking == null)
             {
                 return NotFound();
             }
+
 
             if (saveChangesError.GetValueOrDefault())
             {
@@ -59,11 +60,11 @@ namespace TicketCentral.Pages.VenueBookings
                 _context.VenueBooking.Remove(VenueBooking);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
-            } catch (DbUpdateException)
-            {
-                return RedirectToAction(".Delete", new { id, saveChangesError = true});
             }
-
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(".Delete", new { id, saveChangesError = true });
+            }
         }
     }
 }
