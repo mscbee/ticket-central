@@ -1,0 +1,93 @@
+﻿@page
+@model TicketCentral.Pages.VenueBookings.BookModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Book an Event</h2>
+<h4>Confirmation will bring you back to home page.</h4>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<div class="container">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <form method="post">
+                <div class="card border-primary rounded-0">
+                    <div class="card-header p-0">
+                        <div class="bg-info text-white text-center py-2">
+                            <h3>Book an Event</h3>
+                            <p class="m-0">Your Event prepared, when you're ready...</p>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="form-group">
+                                    <label asp-for="VenueBooking.Event" class="control-label"></label>
+                                    <select asp-for="VenueBooking.EventID" class="form-control"
+                                            asp-items="@Model.eventList">
+                                        <option value="">-- Select Event --</option>
+                                    </select>
+                                    <span asp-validation-for="VenueBooking.EventID" class="text-danger" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="form-group">
+                                    <label asp-for="VenueBooking.Venue" class="control-label"></label>
+                                    <select asp-for="VenueBooking.VenueID" class="form-control"
+                                            asp-items="@Model.venueList">
+                                        <option value="">-- Select Venue --</option>
+                                    </select>
+                                    <span asp-validation-for="VenueBooking.VenueID" class="text-danger" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="form-group" placeholder="Your name?">
+                                    <label asp-for="VenueBooking.BookingManagerName" class="control-label"></label>
+                                    <input asp-for="VenueBooking.BookingManagerName" class="form-control" />
+                                    <span asp-validation-for="VenueBooking.BookingManagerName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+                                </div>
+                                <label asp-for="VenueBooking.BookingManagerEmail" class="control-label"></label>
+                                <input asp-for="VenueBooking.BookingManagerEmail" class="form-control" />
+                                <span asp-validation-for="VenueBooking.BookingManagerEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="VenueBooking.BookingDate" class="control-label"></label>
+                                    <input asp-for="VenueBooking.BookingDate" class="form-control" />
+                                    <span asp-validation-for="VenueBooking.BookingDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <input type="submit" value="Create" class="btn btn-info btn-block rounded-0 py-2">
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+   </div>
+<div>
+    <a asp-page="Index">Back to Index</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

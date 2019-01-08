@@ -21,4 +21,10 @@
     <None Include="wwwroot\images\page_about\about_venueImg.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\BookEvent.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
 </Project>
