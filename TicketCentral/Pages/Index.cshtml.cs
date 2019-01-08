@@ -9,9 +9,17 @@ namespace TicketCentral.Pages
 {
     public class IndexModel : PageModel
     {
+
+        private readonly TicketCentral.Models.BookingContext _context;
+
+        public IndexModel(TicketCentral.Models.BookingContext context)
+        {
+            _context = context;
+        }
+
         public void OnGet()
         {
-
+            
         }
     }
 }
