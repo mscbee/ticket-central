@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data;
 
 namespace TicketCentral.Pages
 {
@@ -16,10 +17,25 @@ namespace TicketCentral.Pages
         {
             _context = context;
         }
-
+        /*
         public void OnGet()
+        {}
+
+        [HttpPost]
+        public ActionResult BookTicket(int id)
         {
-            
-        }
+            var Ticket = new TicketCentral.Models.Ticket { VenueBookingID = id, CustomerID = 0 };
+
+            try
+            {
+                _context.Ticket.Add(Ticket);
+                _context.SaveChanges();
+            }
+            catch (DBConcurrencyException)
+            {
+                return NotFound();
+            }
+            return Page();
+        } */
     }
 }

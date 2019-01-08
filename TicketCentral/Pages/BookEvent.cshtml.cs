@@ -44,5 +44,6 @@ namespace TicketCentral.Pages.VenueBookings
 
             return RedirectToPage("./Index");
         }
+
     }
 }
