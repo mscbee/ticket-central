@@ -24,6 +24,18 @@ namespace TicketCentral
 
                 try
                 {
+                    var customerContext = services.GetRequiredService<CustomerContext>();
+                    customerContext.Database.EnsureCreated();
+
+                    var eventContext = services.GetRequiredService<EventContext>();
+                    eventContext.Database.EnsureCreated();
+
+                    var ticketContext = services.GetRequiredService<TicketContext>();
+                    ticketContext.Database.EnsureCreated();
+
+                    var venueContext = services.GetRequiredService<VenueContext>();
+                    venueContext.Database.EnsureCreated();
+
                     var context = services.GetRequiredService<BookingContext>();
                     context.Database.EnsureCreated();
                     DbInitializer.Initialize(context);

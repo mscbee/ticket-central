@@ -28,6 +28,23 @@ namespace TicketCentral.Pages
             VenueBooking = await _context.VenueBooking
                 .Include(v => v.Venue).ToListAsync();
         }
+
+        [HttpPost]
+        public ActionResult BookTicket(int id, int cId)
+        {
+            var Ticket = new TicketCentral.Models.Ticket { VenueBookingID = id, CustomerID = cId };
+
+            try
+            {
+                _context.Ticket.Add(Ticket);
+                _context.SaveChanges();
+            }
+            catch (DBConcurrencyException)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
     }
 }
 
