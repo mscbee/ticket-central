@@ -11,9 +11,9 @@ namespace TicketCentral.Pages.Customers
 {
     public class DetailsModel : PageModel
     {
-        private readonly TicketCentral.Models.CustomerContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public DetailsModel(TicketCentral.Models.CustomerContext context)
+        public DetailsModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }

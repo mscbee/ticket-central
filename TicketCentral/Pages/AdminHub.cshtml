@@ -1,0 +1,15 @@
+﻿@page
+@model TicketCentral.Pages.AdminHubModel
+@{
+    ViewData["Title"] = "AdminHub";
+}
+
+<h2>Admin Hub</h2>
+<ul>
+    <li><a asp-page="/BookEvent">Book an Event</a></li>
+    <li><a asp-page="/Customers/Index">Customers CRUD</a></li>
+    <li><a asp-page="/Events/Index">Events CRUD</a></li>
+    <li><a asp-page="/Tickets/Index">Tickets CRUD</a></li>
+    <li><a asp-page="/Venues/Index">Venues CRUD</a></li>
+    <li><a asp-page="/VenueBookings/Index">VenueBookings CRUD</a></li>
+</ul>

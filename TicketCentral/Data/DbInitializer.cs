@@ -15,10 +15,23 @@ namespace TicketCentral.Models
             {
                 return;
             }
+            var tickets = new Ticket[]
+            {
+                new Ticket{VenueBookingID = 0, CustomerID = 1 },
+                new Ticket{VenueBookingID = 1, CustomerID = 1 },
+
+            };
+
+            foreach (Ticket t in tickets)
+            {
+                context.Ticket.Add(t);
+
+            }
+            context.SaveChanges();
 
             var customers = new Customer[]
             {
-                new Customer{FirstName="a",LastName="b",Email="ab@sky.uk", Password="Itsasecret", ContactNumber=01234567891, HasSubscription=0},
+                new Customer{FirstName="test",LastName="test",Email="test@sky.uk", Password="Itsasecret", ContactNumber=01234567191, HasSubscription=0},
                 new Customer{FirstName="a",LastName="b",Email="ab@sky.uk", Password="Itsasecret", ContactNumber=01234567891, HasSubscription=0}
             };
 
@@ -84,7 +97,7 @@ namespace TicketCentral.Models
                 context.VenueBooking.Add(vb);
             }
             context.SaveChanges();
-            */
+*/            
         }
     }
 }

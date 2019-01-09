@@ -17,14 +17,14 @@ namespace TicketCentral.Pages
         {
             _context = context;
         }
-        /*
+        
         public void OnGet()
         {}
 
         [HttpPost]
-        public ActionResult BookTicket(int id)
+        public ActionResult BookTicket(int id, int cId)
         {
-            var Ticket = new TicketCentral.Models.Ticket { VenueBookingID = id, CustomerID = 0 };
+            var Ticket = new TicketCentral.Models.Ticket { VenueBookingID = id, CustomerID = cId };
 
             try
             {
@@ -36,6 +36,6 @@ namespace TicketCentral.Pages
                 return NotFound();
             }
             return Page();
-        } */
+        } 
     }
 }

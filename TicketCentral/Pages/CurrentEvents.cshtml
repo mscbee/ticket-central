@@ -48,7 +48,7 @@
                                     @Html.DisplayFor(modelItem => item.Venue.VenuePostcode)
                                 </p>
                                 <ul>
-                                    <li style="width:33%;">Book!<span class="fa fa-male"></span></li>
+                                    <input type="button" title="Book" value="Book!" onclick="location.href='@Url.Action(" BookTicket", "IndexModel" , new { id=item.VenueBookingID })'" />
                                 </ul>
                             </div>
                         </li>

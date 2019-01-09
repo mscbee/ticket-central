@@ -12,9 +12,9 @@ namespace TicketCentral.Pages.Events
 {
     public class EditModel : PageModel
     {
-        private readonly TicketCentral.Models.EventContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public EditModel(TicketCentral.Models.EventContext context)
+        public EditModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
