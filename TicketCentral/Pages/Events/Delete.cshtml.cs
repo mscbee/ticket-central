@@ -11,35 +11,28 @@ namespace TicketCentral.Pages.Events
 {
     public class DeleteModel : PageModel
     {
-        private readonly TicketCentral.Models.EventContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public DeleteModel(TicketCentral.Models.EventContext context)
+        public DeleteModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Event Event { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Event = await _context.Event.AsNoTracking()
-                .FirstOrDefaultAsync(m => m.EventID == id);
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.EventID == id);
 
             if (Event == null)
             {
                 return NotFound();
-            }
-
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ErrorMessage = "Delete failed. Try again";
             }
             return Page();
         }
@@ -51,19 +44,15 @@ namespace TicketCentral.Pages.Events
                 return NotFound();
             }
 
-            Event = await _context.Event.AsNoTracking()
-                .FirstOrDefaultAsync(e => e.EventID == id);
+            Event = await _context.Event.FindAsync(id);
 
-            try
+            if (Event != null)
             {
                 _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
             }
-            catch (DbUpdateException)
-            {
-                return RedirectToAction(".Delete", new { id, saveChangesError = true });
-            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

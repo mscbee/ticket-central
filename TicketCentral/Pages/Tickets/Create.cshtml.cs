@@ -11,17 +11,17 @@ namespace TicketCentral.Pages.Tickets
 {
     public class CreateModel : PageModel
     {
-        private readonly TicketCentral.Models.TicketContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public CreateModel(TicketCentral.Models.TicketContext context)
+        public CreateModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerID");
-        ViewData["VenueBookingID"] = new SelectList(_context.Set<VenueBooking>(), "VenueBookingID", "VenueBookingID");
+        ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Email");
+        ViewData["VenueBookingID"] = new SelectList(_context.VenueBooking, "VenueBookingID", "BookingManagerEmail");
             return Page();
         }
 

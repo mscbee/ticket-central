@@ -1,4 +1,4 @@
-﻿@page "{id:int?}"
+﻿@page
 @model TicketCentral.Pages.Tickets.DeleteModel
 
 @{
@@ -6,7 +6,6 @@
 }
 
 <h2>Delete</h2>
-<p class="text-danger">@Model.ErrorMessage</p>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -17,16 +16,16 @@
             @Html.DisplayNameFor(model => model.Ticket.Customer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Ticket.Customer.CustomerID)
+            @Html.DisplayFor(model => model.Ticket.Customer.Email)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Ticket.VenueBooking)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Ticket.VenueBooking.VenueBookingID)
+            @Html.DisplayFor(model => model.Ticket.VenueBooking.BookingManagerEmail)
         </dd>
     </dl>
-
+    
     <form method="post">
         <input type="hidden" asp-for="Ticket.TicketID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |

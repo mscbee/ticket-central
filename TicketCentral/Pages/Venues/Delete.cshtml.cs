@@ -11,30 +11,28 @@ namespace TicketCentral.Pages.Venues
 {
     public class DeleteModel : PageModel
     {
-        private readonly TicketCentral.Models.VenueContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public DeleteModel(TicketCentral.Models.VenueContext context)
+        public DeleteModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Venue Venue { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Venue = await _context.Venue.AsNoTracking()
-                .FirstOrDefaultAsync(m => m.VenueID == id);
+            Venue = await _context.Venue.FirstOrDefaultAsync(m => m.VenueID == id);
 
-            if (saveChangesError.GetValueOrDefault())
+            if (Venue == null)
             {
-                ErrorMessage = "Delete failed. Try again";
+                return NotFound();
             }
             return Page();
         }
@@ -46,19 +44,15 @@ namespace TicketCentral.Pages.Venues
                 return NotFound();
             }
 
-            Venue = await _context.Venue.AsNoTracking()
-                .FirstOrDefaultAsync(v => v.VenueID == id);
+            Venue = await _context.Venue.FindAsync(id);
 
-            try
+            if (Venue != null)
             {
                 _context.Venue.Remove(Venue);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
             }
-            catch (DbUpdateException)
-            {
-                return RedirectToAction(".Delete", new { id, saveChangesError = true });
-            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

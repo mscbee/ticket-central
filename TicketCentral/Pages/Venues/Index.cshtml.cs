@@ -11,9 +11,9 @@ namespace TicketCentral.Pages.Venues
 {
     public class IndexModel : PageModel
     {
-        private readonly TicketCentral.Models.VenueContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public IndexModel(TicketCentral.Models.VenueContext context)
+        public IndexModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }

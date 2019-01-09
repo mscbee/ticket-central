@@ -11,9 +11,9 @@ namespace TicketCentral.Pages.Customers
 {
     public class CreateModel : PageModel
     {
-        private readonly TicketCentral.Models.CustomerContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public CreateModel(TicketCentral.Models.CustomerContext context)
+        public CreateModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
