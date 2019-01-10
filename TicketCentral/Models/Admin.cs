@@ -15,7 +15,7 @@ namespace TicketCentral.Models
         [StringLength(50, ErrorMessage = "Username cannot be longer than 50 characters.")]
         public string UserName { get; set;}
         [Required]
-        [StringLength(15, MinimumLength = 3, ErrorMessage = "Password cannot be less than 3 characters or longer than 15 characters.")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "Password cannot be less than 6 characters or longer than 15 characters.")]
         public string Password { get; set; }
     }
 }
