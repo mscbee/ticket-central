@@ -12,9 +12,9 @@ namespace TicketCentral.Pages.Tickets
 {
     public class EditModel : PageModel
     {
-        private readonly TicketCentral.Models.TicketContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public EditModel(TicketCentral.Models.TicketContext context)
+        public EditModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
@@ -37,8 +37,8 @@ namespace TicketCentral.Pages.Tickets
             {
                 return NotFound();
             }
-           ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerID");
-           ViewData["VenueBookingID"] = new SelectList(_context.Set<VenueBooking>(), "VenueBookingID", "VenueBookingID");
+           ViewData["CustomerID"] = new SelectList(_context.Customer, "CustomerID", "Email");
+           ViewData["VenueBookingID"] = new SelectList(_context.VenueBooking, "VenueBookingID", "BookingManagerEmail");
             return Page();
         }
 

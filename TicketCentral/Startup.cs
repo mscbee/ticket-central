@@ -42,17 +42,6 @@ namespace TicketCentral
             services.AddDbContext<BookingContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookingContext")));
 
-            services.AddDbContext<CustomerContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("CustomerContext")));
-
-            services.AddDbContext<EventContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("EventContext")));
-
-            services.AddDbContext<TicketContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("TicketContext")));
-
-            services.AddDbContext<VenueContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("VenueContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,9 +11,9 @@ namespace TicketCentral.Pages.Venues
 {
     public class CreateModel : PageModel
     {
-        private readonly TicketCentral.Models.VenueContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public CreateModel(TicketCentral.Models.VenueContext context)
+        public CreateModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }

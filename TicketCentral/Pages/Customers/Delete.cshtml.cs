@@ -11,37 +11,29 @@ namespace TicketCentral.Pages.Customers
 {
     public class DeleteModel : PageModel
     {
-        private readonly TicketCentral.Models.CustomerContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public DeleteModel(TicketCentral.Models.CustomerContext context)
+        public DeleteModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public Customer Customer { get; set; }
-        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Customer = await _context.Customer.AsNoTracking()
-                .FirstOrDefaultAsync(m => m.CustomerID == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerID == id);
 
             if (Customer == null)
             {
                 return NotFound();
             }
-
-            if (saveChangesError.GetValueOrDefault())
-            {
-                ErrorMessage = "Delete failed. Try again";
-            }
-
             return Page();
         }
 
@@ -52,19 +44,15 @@ namespace TicketCentral.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customer.AsNoTracking()
-                .FirstOrDefaultAsync(c => c.CustomerID == id);
+            Customer = await _context.Customer.FindAsync(id);
 
-            try
+            if (Customer != null)
             {
                 _context.Customer.Remove(Customer);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
             }
-            catch (DbUpdateException)
-            {
-                return RedirectToAction(".Delete", new { id, saveChangesError = true });
-            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

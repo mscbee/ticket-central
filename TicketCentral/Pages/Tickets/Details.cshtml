@@ -1,11 +1,11 @@
-﻿@page "{id:int?}"
+﻿@page
 @model TicketCentral.Pages.Tickets.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details of Tickets</h2>
 
 <div>
     <h4>Ticket</h4>
@@ -15,13 +15,13 @@
             @Html.DisplayNameFor(model => model.Ticket.Customer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Ticket.Customer.CustomerID)
+            @Html.DisplayFor(model => model.Ticket.Customer.Email)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Ticket.VenueBooking)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Ticket.VenueBooking.VenueBookingID)
+            @Html.DisplayFor(model => model.Ticket.VenueBooking.BookingManagerEmail)
         </dd>
     </dl>
 </div>

@@ -11,9 +11,9 @@ namespace TicketCentral.Pages.Events
 {
     public class DetailsModel : PageModel
     {
-        private readonly TicketCentral.Models.EventContext _context;
+        private readonly TicketCentral.Models.BookingContext _context;
 
-        public DetailsModel(TicketCentral.Models.EventContext context)
+        public DetailsModel(TicketCentral.Models.BookingContext context)
         {
             _context = context;
         }

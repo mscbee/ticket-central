@@ -9,31 +9,36 @@
     <div class="jumbotron">
         <h1>Ticket Central</h1>
     </div>
+
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+        </ul>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/images/page_about/about_venueImg.jpg" alt="concert">
+                <div class="carousel-caption">
+                    <h3>Great venues for a great price.</h3>
+                    <p>We had such a great time at the o2!</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <h2>TICKET CENTRAL</h2>
             <p>
                 Welcome to Ticket Central, a free community where we pride ourselves in connecting enthusiasts to their interests.
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Build it from scratch</h2>
-            <p>You can build the application by following the steps in a series of tutorials.</p>
-            <p>
-                <a class="btn btn-default"
-                   href="https://docs.microsoft.com/aspnet/core/data/ef-rp/intro">
-                    See the tutorial &raquo;
-                </a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Download it</h2>
-            <p>You can download the completed project from GitHub.</p>
-            <p>
-                <a class="btn btn-default"
-                   href="https://github.com/aspnet/Docs/tree/master/aspnetcore/data/ef-rp/intro/samples/cu-final">
-                    See project source code &raquo;
-                </a>
             </p>
         </div>
     </div>
@@ -66,13 +71,14 @@
                                     @Html.DisplayFor(modelItem => item.Venue.VenueAddress)
                                     @Html.DisplayFor(modelItem => item.Venue.VenuePostcode)
                                 </p>
-                                <ul>
-                                    <li style="width:33%;">Book!<span class="fa fa-male"></span></li>
-                                </ul>
+                                <input type="button" title="Book" value="Book!" onclick="location.href='@Url.Action("BookTicket", "IndexModel", new { id = item.VenueBookingID })'" />
                             </div>
                         </li>
                     }
                 </ul>
             </div>
         </div>
+
+        <img src="~/images/page_about/about_concertImg.jpg" class="col-xs-12 img-fluid img-rounded" alt="Responsive image" >
+
     </div>
