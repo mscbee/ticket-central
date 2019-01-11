@@ -36,14 +36,13 @@
                     <li><a asp-page="/BookEvent">Book an Event</a></li>
                     <li><a asp-page="/AdminHub">Admin</a></li>
                     <li><a asp-page="/Account">My Account</a></li>
-                    <li><a asp-page="/Identity/Account/Login">Login</a></li>
-                    <li><a asp-page="/Identity/Account/Register">Register</a></li>
+                    <partial name="_LoginPartial" />
+                    <partial name="_CookieConsentPartial" />
                 </ul>
             </div>
         </div>
     </nav>
-
-    <partial name="_CookieConsentPartial" />
+  
 
     <div class="container body-content">
         @RenderBody()
