@@ -12,6 +12,10 @@ namespace TicketCentral.Models
         // Using identity, email is username.
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerID { get; set; }
+
+        // user ID from AspNetUser table.
+        public string OwnerID { get; set; } 
+
         [Required]
         [StringLength(50, ErrorMessage = "Name cannot be longer than 50 characters.")]
         public string FirstName { get; set; }
@@ -26,5 +30,14 @@ namespace TicketCentral.Models
         [StringLength(11, MinimumLength = 11, ErrorMessage = "Contact number needs to be 11 characters.")]
         public int ContactNumber { get; set; }
         public int HasSubscription { get; set; }
+
+        public CustomerStatus Status { get; set; }
+    }
+
+    public enum CustomerStatus
+    {
+        Submitted,
+        Approved,
+        Rejected
     }
 }
