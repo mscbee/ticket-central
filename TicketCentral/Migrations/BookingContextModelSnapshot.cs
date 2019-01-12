@@ -61,8 +61,12 @@ namespace TicketCentral.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<string>("OwnerID");
+
                     b.Property<string>("Password")
                         .IsRequired();
+
+                    b.Property<int>("Status");
 
                     b.HasKey("CustomerID");
 

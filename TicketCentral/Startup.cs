@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.StaticFiles;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using TicketCentral.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TicketCentral
 {
@@ -41,7 +44,6 @@ namespace TicketCentral
 
             services.AddDbContext<BookingContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookingContext")));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +64,7 @@ namespace TicketCentral
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc();
         }

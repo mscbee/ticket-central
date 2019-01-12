@@ -1,11 +1,11 @@
-﻿@page
+﻿@page "{id:int?}"
 @model TicketCentral.Pages.Customers.DeleteModel
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Delete a Customer</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -49,7 +49,7 @@
             @Html.DisplayFor(model => model.Customer.HasSubscription)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Customer.CustomerID" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
