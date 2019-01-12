@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TicketCentral.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TicketCentral.Pages.VenueBookings
 {
+    [Authorize]
     public class BookModel : VenueNamePageModel
     {
         

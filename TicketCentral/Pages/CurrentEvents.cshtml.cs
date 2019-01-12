@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using TicketCentral.Models;
 using System.Data;
 using System.Data.SqlClient;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace TicketCentral.Pages
 {
